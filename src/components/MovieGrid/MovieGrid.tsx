@@ -16,7 +16,7 @@ function MovieGrid({movies, onSelect}:MovieGridProps) {
                       loading="lazy"
                       onClick={()=>onSelect(movie)}
                   />
-                  <h2 className={css.title}>Movie title</h2>
+                  <h2 className={css.title}>{movie.title}</h2>
               </div>
           </li>))}
       </ul>
