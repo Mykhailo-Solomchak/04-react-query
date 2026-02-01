@@ -26,6 +26,7 @@ function App() {
     const{data, isPending, isError, isSuccess}= useQuery({
         queryKey: [`movies`, query, page],
         queryFn:()=>fetchMovies(query, page),
+        enabled: query !== '',
         placeholderData: keepPreviousData
     })
     useEffect(()=>{if(isSuccess&&data.results.length ===0){
