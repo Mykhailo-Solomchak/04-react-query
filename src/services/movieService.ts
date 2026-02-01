@@ -6,12 +6,13 @@ interface TMDBResponse{
     total_pages: number;
 }
 
-export const fetchMovies = async(query:string):Promise<Movie[]>=>{
+export const fetchMovies = async(query:string,page:number):Promise<TMDBResponse>=>{
     const{data}=await axios.get<TMDBResponse>(
 "https://api.themoviedb.org/3/search/movie",
         {
             params: {
-             query   
+             query 
+             ,page 
             },
             headers: {
                 Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
@@ -21,5 +22,5 @@ export const fetchMovies = async(query:string):Promise<Movie[]>=>{
 
 
     )
-    return data.results
+    return data
 }
